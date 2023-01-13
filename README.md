@@ -20,6 +20,7 @@ Es empfiehlt sich die Verwendung der Git-Bash, da die GUI teilweise etwas merkw�
 cd <Ordner> # (Change Directory) Um in einen Ordner zu wechseln
 cd .. # Um in den übergeordneten Ordner ("zurück") zu wechseln
 mkdir <Ordner> # (Make Directory) Um einen Ordner mit dem angegebenen Namen zu erstellen
+ls # (List) Um alle Dateien im aktuellen Ordner anzuzeigen
 ```
 
 ### Herunterladen der Repository und Wechseln in den develop Branch
