@@ -14,6 +14,6 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           known_hosts: ${{ secrets.SSH_KNOWN_HOSTS }}
       - name: Deploy with branch name
-        run: rsync -avh ./src/ "maps@${{ secrets.SSH_HOST }}:/mnt/maps/${GITHUB_REF##*/}" --delete
+        run: rsync -avh ./map/ "maps@${{ secrets.SSH_HOST }}:/mnt/maps/${GITHUB_REF##*/}" --delete
       - name: Deploy with commit id
-        run: rsync -avh ./src/ "maps@${{ secrets.SSH_HOST }}:/mnt/maps/$(git rev-parse --short HEAD)" --delete
+        run: rsync -avh ./map/ "maps@${{ secrets.SSH_HOST }}:/mnt/maps/$(git rev-parse --short HEAD)" --delete
