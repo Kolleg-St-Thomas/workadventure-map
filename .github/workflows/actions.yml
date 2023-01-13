@@ -1,0 +1,16 @@
+name: Upload maps to server
+on: [push]
+
+jobs:
+  upload-maps:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install SSH Key
+        uses: shimataro/ssh-key-action@v2
+        with:
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          known_hosts: ${{ secrets.SSH_KNOWN_HOSTS }}
+      - name: Deploy with branch name
+        run: rsync -avh ./ "maps@${{ secrets.SSH_HOST }}:/mnt/maps/${GITHUB_REF##*/}/"
+      - name: Deploy with commit id
+        run: rsync -avh ./ "maps@${{ secrets.SSH_HOST }}:/mnt/maps/$(git rev-parse --short HEAD)/"
