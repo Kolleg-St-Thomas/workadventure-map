@@ -3,7 +3,7 @@ on: [push]
 
 jobs:
   upload-maps:
-  name: Upload maps to server
+    name: Upload maps to server
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
