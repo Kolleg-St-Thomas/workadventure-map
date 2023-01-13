@@ -3,6 +3,7 @@ on: [push]
 
 jobs:
   upload-maps:
+  name: Upload maps to server
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -13,6 +14,6 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           known_hosts: ${{ secrets.SSH_KNOWN_HOSTS }}
       - name: Deploy with branch name
-        run: rsync -avh ./ "maps@${{ secrets.SSH_HOST }}:/mnt/maps/${GITHUB_REF##*/}/"
+        run: rsync -avh ./ "maps@${{ secrets.SSH_HOST }}:/mnt/maps/${GITHUB_REF##*/}/" --delete
       - name: Deploy with commit id
-        run: rsync -avh ./ "maps@${{ secrets.SSH_HOST }}:/mnt/maps/$(git rev-parse --short HEAD)/"
+        run: rsync -avh ./ "maps@${{ secrets.SSH_HOST }}:/mnt/maps/$(git rev-parse --short HEAD)/" --delete
