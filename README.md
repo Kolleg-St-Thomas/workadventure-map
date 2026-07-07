@@ -10,7 +10,7 @@ Karte erstellt von https://github.com/suri909
 Karten-Template von https://github.com/thecodingmachine/workadventure-map-starter-kit
 
 ## Bearbeiten der Karte
-Die Github Repository ist in ein Master-Branch und einen Develop-Branch unterteilt. Änderungen erfolgen immer im Develop-Branch, können dann getestet werden (siehe Testing) und können, wenn alles fertig ist, mit einem Pull-Request in den Master-Branch überführt werden. Die Karte des Master-Branches wird standardmäßig beim Aufruf von https://play.adventure.kst-vechta.de gestartet.
+Die Github Repository ist in ein Master-Branch und einen Develop-Branch unterteilt. Änderungen erfolgen immer im Develop-Branch, können dann getestet werden (siehe Testing) und können, wenn alles fertig ist, mit einem Pull-Request in den Master-Branch überführt werden. Die Karte des Master-Branches wird standardmäßig beim Aufruf von https://play.adventure.kst-vechta.cloud gestartet.
 
 ### Git-Umgebung
 Die aktuellste Version von Git für Windows kann unter folgendem Link herunterladen und installiert werden: https://git-scm.com/downloads
@@ -111,4 +111,4 @@ git pull
 ```
 
 ### Testing
-Die Github Repository ist so konfiguriert, das alle Änderungen in develop automatisch mittels Github-Actions auf dem Workadventure-Server hochgeladen werden. Die Datei findet man hier: https://map-storage.adventure.kst-vechta.de/. Die aktuelle develop Version kann über folgenden Link gespielt werden: https://play.adventure.kst-vechta.de/_/global/map-storage.adventure.kst-vechta.de/develop/map.json
+Die Github Repository ist so konfiguriert, das alle Änderungen in develop automatisch mittels Github-Actions auf dem Workadventure-Server hochgeladen werden. Die Datei findet man hier: https://map-storage.adventure.kst-vechta.cloud/. Die aktuelle develop Version kann über folgenden Link gespielt werden: https://play.adventure.kst-vechta.cloud/_/global/map-storage.adventure.kst-vechta.cloud/develop/map.json
