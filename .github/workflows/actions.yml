@@ -1,19 +1,42 @@
-name: Upload maps to server
-on: [push]
+
+name: Deploy WorkAdventure Maps to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: github-pages
+  cancel-in-progress: true
 
 jobs:
-  upload-maps:
-    name: Upload maps to server
+  deploy:
+    name: Deploy maps
     runs-on: ubuntu-latest
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      - name: Install SSH Key
-        uses: shimataro/ssh-key-action@v2
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload maps
+        uses: actions/upload-pages-artifact@v4
         with:
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          known_hosts: ${{ secrets.SSH_KNOWN_HOSTS }}
-      - name: Deploy with branch name
-        run: rsync -avh ./map/ "maps@${{ secrets.SSH_HOST }}:/mnt/maps/${GITHUB_REF##*/}" --delete
-      - name: Deploy with commit id
-        run: rsync -avh ./map/ "maps@${{ secrets.SSH_HOST }}:/mnt/maps/$(git rev-parse --short HEAD)" --delete
+          path: ./map
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
